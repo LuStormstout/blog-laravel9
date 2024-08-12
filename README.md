@@ -38,4 +38,4 @@
 - 执行 `composer install` 安装依赖
 - 执行 `php artisan key:generate` 生成应用密钥
 - 执行 `php artisan migrate` 迁移数据库
-- 为了数据库名称和大家的项目不冲突，将本地老师项目对应的数据库名称修改为 lu_blog-laravel9 请注意这里的数据库名称，需要和 .env 文件中的配置一致
+- 为了数据库名称和大家的项目不冲突，将本地老师项目对应的数据库名称修改为 `lu_blog-laravel9` 请注意这里的数据库名称，需要和 .env 文件中的配置一致
