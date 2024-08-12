@@ -38,7 +38,7 @@ class SessionsController extends Controller
         ]);
 
         // Laravel 中 Auth 的 attempt 方法可以让我们很方便的完成用户的身份认证操作
-        if (Auth::attempt($credential)) {
+        if (Auth::attempt($credential, $request->has('remember'))) {
             // 登录成功
             session()->flash('success', '欢迎回来！');
             return redirect()->route('users.show', [Auth::user()]);
