@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 // 首页
 Route::get('/', 'StaticPagesController@home')->name('home');
 // 帮助页面
-Route::get('/help', 'StaticPagesController@help')->name('help');
+Route::get('help', 'StaticPagesController@help')->name('help');
 // 关于页面
-Route::get('/about', 'StaticPagesController@about')->name('about');
+Route::get('about', 'StaticPagesController@about')->name('about');
 
 // 用户注册
 Route::get('signup', 'UsersController@create')->name('signup');
@@ -34,6 +34,9 @@ Route::resource('users', 'UsersController');
 // Route::patch('/users/{user}', 'UsersController@update')->name('users.update');
 // Route::delete('/users/{user}', 'UsersController@destroy')->name('users.destroy');
 
+// 显示登录页面
 Route::get('login', 'SessionsController@create')->name('login');
+// 执行登录操作
 Route::post('login', 'SessionsController@store')->name('login');
-Route::delete('logout', 'SessionsController@destory')->name('logout');
+// 退出登录
+Route::delete('logout', 'SessionsController@destroy')->name('logout');
