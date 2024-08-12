@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // 首页
-Route::get('/', 'StaticPagesController@home')->name('/');
+Route::get('/', 'StaticPagesController@home')->name('home');
 // 帮助页面
 Route::get('/help', 'StaticPagesController@help')->name('help');
 // 关于页面

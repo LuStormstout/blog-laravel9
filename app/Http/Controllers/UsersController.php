@@ -8,6 +8,7 @@ use Illuminate\Contracts\View\View;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
 class UsersController extends Controller
@@ -54,6 +55,7 @@ class UsersController extends Controller
             'password' => bcrypt($request->password)
         ]);
 
+        Auth::login($user);
         session()->flash('success', '注册成功！');
         return redirect()->route('users.show', [$user]);
     }
