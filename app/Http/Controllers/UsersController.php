@@ -60,4 +60,41 @@ class UsersController extends Controller
         return redirect()->route('users.show', [$user]);
     }
 
+    /**
+     * 编辑用户信息
+     *
+     * @param User $user
+     * @return Factory|View|Application
+     */
+    public function edit(User $user): Factory|View|Application
+    {
+        return view('users.edit', compact('user'));
+    }
+
+    /**
+     * 更新用户信息
+     *
+     * @param User $user
+     * @param Request $request
+     * @return RedirectResponse
+     * @throws ValidationException
+     */
+    public function update(User $user, Request $request): RedirectResponse
+    {
+        $this->validate($request, [
+            'name' => 'required|max:50',
+            'password' => 'nullable|confirmed|min:6'
+        ]);
+
+        $data = [];
+        $data['name'] = $request->name;
+        if ($request->password) {
+            $data['password'] = bcrypt($request->password);
+        }
+
+        $user->update($data);
+
+        session()->flash('success', '个人资料更新成功！');
+        return redirect()->route('users.show', $user->id);
+    }
 }
