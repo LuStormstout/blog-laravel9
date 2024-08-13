@@ -20,7 +20,7 @@ class UsersController extends Controller
         // 未登录用户访问用户编辑页面时将被重定向到登录页面
         // 已经登录的用户才可以访问个人信息编辑页面
         $this->middleware('auth', [
-            'except' => ['show', 'create', 'store']
+            'except' => ['show', 'create', 'store', 'index']
         ]);
 
         // 只让未登录用户访问注册页面
@@ -120,5 +120,16 @@ class UsersController extends Controller
 
         session()->flash('success', '个人资料更新成功！');
         return redirect()->route('users.show', $user->id);
+    }
+
+    /**
+     * 展示用户列表
+     *
+     * @return Factory|View|Application
+     */
+    public function index(): Factory|View|Application
+    {
+        $users = User::all();
+        return view('users.index', compact('users'));
     }
 }
