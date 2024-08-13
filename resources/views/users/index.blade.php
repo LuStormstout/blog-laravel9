@@ -7,11 +7,14 @@
         <h2 class="md-4 text-center">所有用户</h2>
         <div class="list-group list-group-flush">
             @foreach($users as $user)
-                <div class="list-group-item">
-                    <img class="mr-3" src="{{ $user->gravatar() }}" alt="{{ $user->name }}" width="32">
-                    <a href="{{ route('users.show', $user) }}">{{ $user->name }}</a>
-                </div>
+                @include('users._user')
             @endforeach
         </div>
+
+        <div class="mt-3">
+            {{-- 渲染分页的时候使用的标签和其他的不一样需要注意 {!! $xxx->rander() !!}--}}
+            {!! $users->render() !!}
+        </div>
+
     </div>
 @endsection
