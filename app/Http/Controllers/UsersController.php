@@ -19,6 +19,7 @@ class UsersController extends Controller
         // 未登录的用户可以访问个人信息页面和注册页面
         // 未登录用户访问用户编辑页面时将被重定向到登录页面
         // 已经登录的用户才可以访问个人信息编辑页面
+        // except 方法来设定 指定动作 不使用 Auth 中间件进行过滤
         $this->middleware('auth', [
             'except' => ['show', 'create', 'store', 'index']
         ]);
@@ -131,5 +132,21 @@ class UsersController extends Controller
     {
         $users = User::paginate(10);
         return view('users.index', compact('users'));
+    }
+
+    /**
+     * 删除用户
+     *
+     * @param User $user
+     * @return RedirectResponse
+     * @throws AuthorizationException
+     */
+    public function destroy(User $user): RedirectResponse
+    {
+        $this->authorize('destroy', $user);
+        $user->delete();
+        session()->flash('success', '成功删除用户！');
+        // back() 方法会将用户重定向到之前的页面上
+        return back();
     }
 }
