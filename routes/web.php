@@ -40,3 +40,6 @@ Route::get('login', 'SessionsController@create')->name('login');
 Route::post('login', 'SessionsController@store')->name('login');
 // 退出登录
 Route::delete('logout', 'SessionsController@destroy')->name('logout');
+
+// 激活用户账号
+Route::get('signup/confirm/{token}', 'UsersController@confirmEmail')->name('confirm_email');
