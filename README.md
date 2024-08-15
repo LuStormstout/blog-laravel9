@@ -89,3 +89,20 @@
     4. 用户点击邮件里面的链接，跳转到重设密码页面
     5. 用户在重设密码页面输入邮箱和新密码，点击提交
     6. 控制器对用户的邮箱和密码重置令牌验证，验证通过之后更新用户的密码
+
+- 配置生产环境中的真实邮件发送
+    - MAIL_DRIVER=smtp
+      - QQ 邮箱的 SMTP 服务器地址，必须为此值
+    - MAIL_HOST=smtp.qq.com
+      - QQ 邮箱的 SMTP 服务器端口，必须为此值
+    - MAIL_PORT=25
+      - 请将此值换为你的 QQ + @qq.com
+    - MAIL_USERNAME=123456@qq.com
+      - 密码是我们第一步拿到的授权码
+    - MAIL_PASSWORD=abcdefg
+      - 加密类型，选项 null 表示不使用任何加密，其他选项还有 ssl，这里我们使用 tls 即可
+    - MAIL_ENCRYPTION=tls
+      - 此值必须同 MAIL_USERNAME 一致
+    - MAIL_FROM_ADDRESS=123456@qq.com
+      - 用来作为邮件的发送者名称
+    - MAIL_FROM_NAME=WeiboApp
