@@ -78,8 +78,9 @@
     3. 用户在点击注册链接跳到指定路由，路由收到激活令牌参数后映射给相关的控制器来处理
     4. 控制器拿到激活令牌并进行验证，验证通过之后对该用户进行激活，并将其激活状态设置未已激活
     5. 用户激活成功之后，自动登录
-  
+
 ## 今天做了写什么 2024-08-15
+
 - 用户密码重设
     - 用于用户忘记密码时，通过邮箱重设密码
 
@@ -92,17 +93,19 @@
 
 - 配置生产环境中的真实邮件发送
     - MAIL_DRIVER=smtp
-      - QQ 邮箱的 SMTP 服务器地址，必须为此值
+        - 使用支持 ESMTP 的 SMTP 服务器发送邮件
     - MAIL_HOST=smtp.qq.com
-      - QQ 邮箱的 SMTP 服务器端口，必须为此值
+        - QQ 邮箱的 SMTP 服务器地址，必须为此值
     - MAIL_PORT=25
-      - 请将此值换为你的 QQ + @qq.com
-    - MAIL_USERNAME=123456@qq.com
-      - 密码是我们第一步拿到的授权码
-    - MAIL_PASSWORD=abcdefg
-      - 加密类型，选项 null 表示不使用任何加密，其他选项还有 ssl，这里我们使用 tls 即可
+        - QQ 邮箱的 SMTP 服务器端口，必须为此值
+    - MAIL_USERNAME=xxxxxxxxxxxxxx@qq.com
+        - 请将此值换为你的 QQ + @qq.com
+    - MAIL_PASSWORD=xxxxxxxxx
+        - 密码是我们第一步拿到的授权码
     - MAIL_ENCRYPTION=tls
-      - 此值必须同 MAIL_USERNAME 一致
-    - MAIL_FROM_ADDRESS=123456@qq.com
-      - 用来作为邮件的发送者名称
+        - 加密类型，选项 null 表示不使用任何加密，其他选项还有 ssl，这里我们使用 tls 即可
+    - MAIL_FROM_ADDRESS=xxxxxxxxxxxxxx@qq.com
+        - 此值必须同 MAIL_USERNAME 一致
     - MAIL_FROM_NAME=WeiboApp
+        - 用来作为邮件的发送者名称
+    
