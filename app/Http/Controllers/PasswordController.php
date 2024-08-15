@@ -16,6 +16,20 @@ use Illuminate\Support\Facades\DB;
 
 class PasswordController extends Controller
 {
+    public function __construct()
+    {
+        // 限流，防止暴力破解
+        // 请求限流是一种保护措施，可以防止用户在短时间内发送大量请求
+        // 在 Laravel 限流的中间件是 throttle，它接受两个参数，第一个参数是最大的请求数，第二个参数是分钟数
+        // 例如 throttle:3,10 表示 10 分钟内最多只能发送 3 个请求
+        // 超过这个限制，Laravel 会返回一个 429 状态码，表示请求过多
+
+        // 限制发送邮件的频率为 10 分钟 3 次
+        $this->middleware('throttle:3,10', [
+            'only' => ['showLinkRequestForm']
+        ]);
+    }
+
     /**
      * 显示密码重设页面, 填写 Email 的表单
      *
