@@ -108,4 +108,24 @@
         - 此值必须同 MAIL_USERNAME 一致
     - MAIL_FROM_NAME=WeiboApp
         - 用来作为邮件的发送者名称
+
+## 今天做了写什么 2024-08-16
+
+- 创建了一个 `user-statuses` 的分支，用于实现微博的 CRUD 功能
+    - `git checkout -b user-statuses` 创建并切换到 `user-statuses` 分支
+- 创建微博数据模型
+    - `php artisan make:migration create_statuses_table --create="statuses"` 创建微博数据表迁移文件
+- 显示微博列表
+    - `php artisan make:controller StatusesController` 创建微博控制器
+    - `php artisan make:model Models/Status` 创建微博模型
+    - `php artisan make:policy StatusPolicy` 创建微博策略
+- 通过模型工厂和数据填充生成微博数据
+    - `php artisan make:factory StatusFactory` 创建微博工厂
+    - `php artisan make:seeder StatusesTableSeeder` 创建微博数据填充
+    - `php artisan migrate:refresh --seed` 重置数据库并填充数据
+- 发布微博
+- 首页显示微博列表
+- 删除微博
+    - 只有微博的作者才可以删除微博，否则不显示删除按钮
+    
     
