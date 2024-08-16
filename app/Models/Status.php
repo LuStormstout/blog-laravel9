@@ -11,6 +11,13 @@ class Status extends Model
     use HasFactory;
 
     /**
+     * 允许被批量赋值的属性
+     *
+     * @var string[]
+     */
+    protected $fillable = ['content'];
+
+    /**
      * 微博属于一个用户
      *
      * @return BelongsTo
