@@ -145,5 +145,9 @@
 
 - 统计信息
     - 用户的关注数、粉丝数、微博数
+    - 创建了用户关注关系表的数据填充 `php artisan make:seeder FollowersTableSeeder`
+    - 重新执行数据填充 `php artisan migrate:refresh --seed` （注意：这里会清空所有数据，生产环境禁止使用！！！）
+    - 创建了 FollowersController 控制器，用于显示用户的关注列表和粉丝列表，`php artisan make:controller FollowersController`
+    - 修改了授权策略，限制自己不能关注自己
     
     
