@@ -58,3 +58,8 @@ Route::resource('statuses', 'StatusesController', ['only' => ['store', 'destroy'
 // 相当于定义了
 // Route::post('/statuses', 'StatusesController@store')->name('statuses.store');
 // Route::delete('/statuses/{status}', 'StatusesController@destroy')->name('statuses.destroy')
+
+// 显示当前用户的关注人列表
+Route::get('/users/{user}/followings', 'UsersController@followings')->name('users.followings');
+// 显示当前用户的粉丝列表
+Route::get('/users/{user}/followers', 'UsersController@followers')->name('users.followers');
